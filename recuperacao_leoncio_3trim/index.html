@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Campeonato de Basquete 3x3</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<h1>Inscrição para o Campeonato de Basquete 3x3</h1>
+<h2>todo atleta também precisa exercitar o cérebro</h2>
+<p>Insira sua idade para se inscrever:</p>
+<input type="number" id="idade" placeholder="Idade">
+<button onclick="inscreverEstudante()">Inscrever</button>
+
+<h2>Interessados na Classe A (16-17 anos): <span id="classeAContador">0</span></h2>
+<p>Equipes na Classe A: <span id="equipesClasseA">0</span></p>
+
+<h2>Interessados na Classe B (14-15 anos): <span id="classeBContador">0</span></h2>
+<p>Equipes na Classe B: <span id="equipesClasseB">0</span></p>
+
+<p id="alerta" style="color: red;"></p>
+
+<script>
+let estudantesClasseA = [];
+let estudantesClasseB = [];
+
+function inscreverEstudante() {
+const idade = parseInt(document.getElementById("idade").value);
+
+if (idade >= 16 && idade <= 17) {
+estudantesClasseA.push(idade);
+document.getElementById("classeAContador").textContent = estudantesClasseA.length;
+} else if (idade >= 14 && idade <= 15) {
+estudantesClasseB.push(idade);
+document.getElementById("classeBContador").textContent = estudantesClasseB.length;
+} else {
+document.getElementById("alerta").textContent = "Você não pode competir, pois está fora das faixas etárias permitidas.";
+return;
+}
+
+document.getElementById("alerta").textContent = "";
+
+const equipesClasseA = Math.floor(estudantesClasseA.length / 3);
+document.getElementById("equipesClasseA").textContent = equipesClasseA;
+
+const equipesClasseB = Math.floor(estudantesClasseB.length / 3);
+document.getElementById("equipesClasseB").textContent = equipesClasseB;
+}
+</script>
+</body>
+</html>
